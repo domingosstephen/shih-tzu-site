@@ -37,6 +37,7 @@ export default function Navbar() {
           <Link href="/" className="text-sm font-medium hover:text-rose transition-colors">{t("nav.home")}</Link>
           <Link href="/welpen" className="text-sm font-medium hover:text-rose transition-colors">{t("nav.puppies")}</Link>
           <Link href="/ueber-uns" className="text-sm font-medium hover:text-rose transition-colors">{t("nav.about")}</Link>
+          <Link href="/blog" className="text-sm font-medium hover:text-rose transition-colors">Blog</Link>
           <Link href="/kontakt" className="text-sm font-medium hover:text-rose transition-colors">{t("nav.contact")}</Link>
           <LanguageSwitcher />
           <Link
@@ -70,6 +71,7 @@ export default function Navbar() {
           <Link href="/" onClick={() => setMobileOpen(false)} className="text-base font-medium">{t("nav.home")}</Link>
           <Link href="/welpen" onClick={() => setMobileOpen(false)} className="text-base font-medium">{t("nav.puppies")}</Link>
           <Link href="/ueber-uns" onClick={() => setMobileOpen(false)} className="text-base font-medium">{t("nav.about")}</Link>
+          <Link href="/blog" onClick={() => setMobileOpen(false)} className="text-base font-medium">Blog</Link>
           <Link href="/kontakt" onClick={() => setMobileOpen(false)} className="text-base font-medium">{t("nav.contact")}</Link>
           <Link href="/welpen" onClick={() => setMobileOpen(false)} className="bg-rose text-white px-6 py-3 rounded-full text-center text-sm font-semibold">
             {t("nav.cta")}
