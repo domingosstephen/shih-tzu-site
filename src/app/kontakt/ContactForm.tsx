@@ -6,10 +6,37 @@ import { useScrollAnimations } from "@/lib/useGSAP";
 export default function ContactForm() {
   const containerRef = useScrollAnimations();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(false);
+    const form = e.currentTarget;
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/hufmannardine@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          vorname: (form.elements.namedItem("vorname") as HTMLInputElement).value,
+          nachname: (form.elements.namedItem("nachname") as HTMLInputElement).value,
+          email: (form.elements.namedItem("email") as HTMLInputElement).value,
+          welpe: (form.elements.namedItem("welpe") as HTMLSelectElement).value,
+          nachricht: (form.elements.namedItem("nachricht") as HTMLTextAreaElement).value,
+          _subject: "Neue Welpenanfrage - ShihTzuWelpen.com",
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -139,8 +166,12 @@ export default function ContactForm() {
                     />
                   </div>
 
-                  <button type="submit" className="w-full bg-rose text-white py-4 rounded-full font-semibold hover:bg-accent-dark transition-all hover:shadow-xl hover:shadow-rose/20 text-base">
-                    Anfrage senden
+                  {error && (
+                    <p className="text-sm text-red-500 text-center">Fehler beim Senden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.</p>
+                  )}
+
+                  <button type="submit" disabled={submitting} className="w-full bg-rose text-white py-4 rounded-full font-semibold hover:bg-accent-dark transition-all hover:shadow-xl hover:shadow-rose/20 text-base disabled:opacity-60 disabled:cursor-not-allowed">
+                    {submitting ? "Wird gesendet..." : "Anfrage senden"}
                   </button>
 
                   <p className="text-xs text-foreground/35 text-center">

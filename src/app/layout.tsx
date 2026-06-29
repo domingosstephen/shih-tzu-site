@@ -63,6 +63,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               priceRange: "699 EUR",
               image: "https://shihtzuwelpen.com/puppies/Jessica/photo_5875461565706866454_x.jpg",
               openingHours: "Mo-Sa 09:00-18:00",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "DE",
+              },
             }),
           }}
         />
