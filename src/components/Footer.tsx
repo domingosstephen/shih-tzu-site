@@ -31,7 +31,8 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4 text-sm">{t("footer.contact")}</h4>
             <ul className="space-y-2 text-sm">
-              <li>titanahuman@gmail.com</li>
+              <li>hufmannardine@gmail.com</li>
+              <li>+49 1573 9205655</li>
               <li>{t("contact.hours.value")}</li>
             </ul>
           </div>
