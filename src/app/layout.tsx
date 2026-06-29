@@ -43,6 +43,7 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   alternates: { canonical: "https://shihtzuwelpen.com" },
+  verification: { google: "SoxKfyMPk5qg0v_gFm2HhMf96t3TPb9mEDkKUCJDnf4" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
